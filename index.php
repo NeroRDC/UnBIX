@@ -75,7 +75,7 @@
   	<td align="left">
  	 <input type="radio" name="genero" value="M"> M
  	 <input type="radio" name="genero" value="F"> F
- 	 <input type="radio" name="genero" value="O"> Outro  
+ 	 <input type="radio" name="genero" value="Outro"> Outro  
   	</td>
   </tr>
 
