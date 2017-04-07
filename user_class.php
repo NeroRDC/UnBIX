@@ -2,7 +2,7 @@
 
 class user
 {
-
+//comentario teste;
 	private $name;
 	private $registration;
 	private $password;
