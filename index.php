@@ -3,10 +3,9 @@
 <html>
  <head>
  <title> UNBIX - Cadastro </title>
+ <link href="cadastro.css" rel="stylesheet">
  <meta name="description" content="Faça aqui seu cadastro no UnBix!">
  <meta http-equiv="content-Type" content="text/html; charset=ISO-8859-1" />
- <link href="cadastro.css" rel="stylesheet">
-
  </head>
 
  <body>
