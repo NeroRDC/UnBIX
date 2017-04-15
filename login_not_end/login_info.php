@@ -32,6 +32,7 @@ function analysing_post($type, $db_collun, &$erros)
 	}
 }
 
+
 analysing_post('matricula','Matricula', $erros);
 analysing_post('pass','Senha', $erros);
 
@@ -52,7 +53,18 @@ if($erros['matriculaErr'] == ' ' && $erros['passErr'] != "Please insert a pass!"
 
 }
 
-echo $matriculaErr. "\n" ." ".$passErr."\n";///ATENÇÃO IMPRIMINDO OS ERROS PERCEBE-SE QUE ESTOU ACESSANDO O BANCO DE DADOS E CONSEGUINDO VERIFICAR QUE TIPO DE DISCREPANCIA O USUARIO COLOCOU COMO INFORMAÇÃO//Faça o teste tire o cometario antes do echo.
+if($passErr != ' ')
+{
+	//header('Location: http://localhost/UnBIX/login_not_end/');
+	echo "<script>alert('$passErr');</script>";
+}
+if($matriculaErr != ' ')
+{
+	echo "<script>alert('$matriculaErr');</script>";
+}
+
+
+//echo $matriculaErr. "\n" ." ".$passErr."\n";///ATENÇÃO IMPRIMINDO OS ERROS PERCEBE-SE QUE ESTOU ACESSANDO O BANCO DE DADOS E CONSEGUINDO VERIFICAR QUE TIPO DE DISCREPANCIA O USUARIO COLOCOU COMO INFORMAÇÃO//Faça o teste tire o cometario antes do echo.
 
 //NAO ESTA NADA PRONTO PESSOAL AINDA FALTA MUITA COISA, MAS VOU COLOCAR NO GIT PRA VCS DAREM UM OLHADA.
 //coisas que tirei da versao anterior:
