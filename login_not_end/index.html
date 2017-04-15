@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+<title>login</title>
+
+</head>
+
+<body>
+
+<h1>LOGIN</h1>
+
+<form action="login_info.php" method="post">
+
+Name: <input type="text" name="name"><br>
+<span class="error">* <?php echo $nameErr;?></span>
+
+E-mail: <input type="text" name="email"><br>
+<span class="error">* <?php echo $emailErr;?></span>
+
+Password: <input type="password" name="senha"><br>
+
+Confirmation of pass: <input type="password" name="confsenha"><br>
+
+<input type="submit">
+
+</form>
+
+</body>
+
+</html> 
