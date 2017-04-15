@@ -6,20 +6,18 @@ include("database.php");
 
 //$db_colluns = array("Userid","Curso","Nome","Matricula","Email" ,"Senha", "Nascimento","Genero");
 
-
-function validate_login_information($to_validate, $collun_database)//to_validate(algo que deve ser verificado no banco de dados)//collundatabase(nome da coluna do banco que quero verificar)
+function validate_login_information($to_validate, $collun_database)//to_validate(algo que deve ser verificado no banco de dados)//collundatabase(nome da coluna do banco)
 {
-	//$pdo = new Database;//objet database
-	$db = Database::connect();//acesso ao banco de dados
+	//$pdo = new Database;//objet database//nao funciona?
+	$db = Database::connect();
 	
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	$query = "select ".$collun_database." from Users;";// consulta
-	//$choosens = $unbix_database->query($query);
+	$query = "select ".$collun_database." from Users;";
 
 	foreach($db->query($query) as $row)
 	{	
-		if($to_validate == $row[$collun_database])//MUDEI
+		if($to_validate == $row[$collun_database])
 		{
 			Database::disconnect();
 			return true;
@@ -31,9 +29,9 @@ function validate_login_information($to_validate, $collun_database)//to_validate
 
 }
 
-function validate_all_info($name, $email, $senha, $db_colluns)
+function validate_all_info($matricula, $senha, $db_colluns)
 {
-	//$pdo = new Database;//objet database
+	//$pdo = new Database;//objet database//nao funciona?
 	$db = Database::connect();
 
 	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -43,17 +41,15 @@ function validate_all_info($name, $email, $senha, $db_colluns)
 
 	foreach($choosens as $row)
 	{
-
-		if($name == $row[$db_colluns[2]] &&  $email == $row[$db_colluns[4]] && $senha == $row[$db_colluns[5]])
+		if( ($matricula == $row[$db_colluns[3]]) && ($senha == $row[$db_colluns[5]]) )
 		{
 			Database::disconnect();
 			return true;
 		}	
+	}		
 		
 		Database::disconnect();
 		return false;
-
-	}
 }
 
 ?>
