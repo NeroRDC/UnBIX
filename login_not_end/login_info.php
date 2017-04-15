@@ -13,7 +13,7 @@ function analysing_post($type, $db_collun, &$erros)
 
 	if(empty($_POST[$type]))
 	{
-		$Err = "Please insert a $type !";
+		$Err = "Please insert a $type!";
 		$erros[$key] = $Err;
 	}
 
@@ -23,8 +23,11 @@ function analysing_post($type, $db_collun, &$erros)
 
 		if(!validate_login_information($search,$db_collun))
 		{
-			$Err = "$type not found!";
-			$erros[$key] = $Err;
+			if($erros['matriculaErr'] == ' ')//so vai dizer que a matricula é invalida mesmo se a senha existir
+			{
+				$Err = "$type Invalid!";
+				$erros[$key] = $Err;
+			}
 		}
 	}
 }
@@ -37,9 +40,6 @@ $passErr = $erros['passErr'];
 
 $pass = $_POST['pass'];
 $matricula = $_POST['matricula'];
-
-echo $matriculaErr. "\n" . " ". $passErr. "\n";///ATENÇÃO IMPRIMINDO OS ERROS PERCEBE-SE QUE ESTOU ACESSANDO O BANCO DE DADOS E CONSEGUINDO VERIFICAR QUE TIPO DE DISCREPANCIA O USUARIO COLOCOU COMO INFORMAÇÃO//Faça o teste tire o cometario antes do echo.
-
 $db_colluns = array("Userid","Curso","Nome","Matricula","Email" ,"Senha", "Nascimento","Genero");
 
 if($erros['matriculaErr'] == ' ' && $erros['passErr'] == ' ')
@@ -48,9 +48,11 @@ if($erros['matriculaErr'] == ' ' && $erros['passErr'] == ' ')
 	echo "sucesso!";
 	
 	else
-	echo "informacoes incorretas";
+	$passErr = "pass Invalid!";//a senha e o login fazem sentido mas nao para uma mesma linha do banco
 
 }
+
+echo $matriculaErr. "\n" . " ". $passErr. "\n";///ATENÇÃO IMPRIMINDO OS ERROS PERCEBE-SE QUE ESTOU ACESSANDO O BANCO DE DADOS E CONSEGUINDO VERIFICAR QUE TIPO DE DISCREPANCIA O USUARIO COLOCOU COMO INFORMAÇÃO//Faça o teste tire o cometario antes do echo.
 
 //NAO ESTA NADA PRONTO PESSOAL AINDA FALTA MUITA COISA, MAS VOU COLOCAR NO GIT PRA VCS DAREM UM OLHADA.
 //coisas que tirei da versao anterior:
