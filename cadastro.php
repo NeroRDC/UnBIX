@@ -34,7 +34,7 @@
     <label for="Email">Email: </label>
    </td>
    <td align="left">
-    <input type="text" name="email" />
+    <input type="email" name="email" />
    </td>
   </tr>
 
